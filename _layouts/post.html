@@ -1,0 +1,43 @@
+---
+layout: default
+---
+<div class="pure-g links">
+  <div class="pure-u-6-24 left">
+    {% if page.previous %}
+      <a href="{{ page.previous.url }}"><i class="fa fa-arrow-left"></i> {{ page.previous.date | date: "%Y %m %d" }}</a>
+    {% else %}
+      <a href="#"><i class="fa fa-times"></i></a>
+    {% endif %}
+  </div>
+  <div class="pure-u-12-24 center">
+    <strong>{{ page.date | date: "%Y %m %d" }}</strong>
+  </div>
+  <div class="pure-u-6-24 right">
+    {% if page.next %}
+      <a href="{{ page.next.url }}">{{ page.next.date | date: "%Y %m %d" }} <i class="fa fa-arrow-right"></i></a>
+    {% else %}
+      <a href="#"><i class="fa fa-times"></i></a>
+    {% endif %}
+  </div>
+</div>
+<div class="pure-g pic">
+  <div class="pure-u-1">
+    <img src="{{ page.image }}.jpg" class="pure-img" />
+  </div>
+</div>
+<div class="pure-g text">
+  <div class="pure-u-md-6-24 pure-u-1"> </div>
+  <div class="pure-u-md-12-24 pure-u-1">
+    <h2>{{ page.title }}</h2>
+    {{ content }}
+    <div class="meta pure-menu pure-menu-horizontal">
+      <ul class="pure-menu-list">
+        <li class="pure-menu-item"><a href="#" class="pure-menu-link"><i class="fa fa-map-marker"></i> {{ page.location }}</a></li>
+        <li class="pure-menu-item"><a href="#" class="pure-menu-link"><i class="fa fa-calendar"></i> {{ page.shoot_date }}</a></li>
+        <li class="pure-menu-item"><a href="#" class="pure-menu-link"><i class="fa fa-user"></i> {{ page.author }}</a></li>
+        <li class="pure-menu-item"><a href="#" class="pure-menu-link"><i class="fa fa-camera"></i> {{ page.gear }}</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="pure-u-md-6-24 pure-u-1"> </div>
+</div>
