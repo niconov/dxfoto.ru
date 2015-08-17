@@ -5,7 +5,7 @@ layout: default
 <div class="pure-g index">
   {% for i in (0..11) %}
     {% assign post = site.posts[i] %}
-    <div class="pure-u-md-2-24 pure-u-12-24 index-item">
+    <div class="pure-u-12-24 pure-u-sm-8-24 pure-u-md-6-24 pure-u-lg-2-24 index-item">
       {% if post %}
         {{ post.date | date: "%Y %m %d" }}
         <img src="{{ post.image }}b.jpg" alt="{{ post.title }}" class="pure-img" />
