@@ -46,8 +46,9 @@ layout: default
     "@context" : "http://schema.org",
     "@type" : "Article",
     "name" : "{{ page.title }}",
-    "datePublished" : "{{ page..date | date: "%Y %m %d" }}",
+    "datePublished" : "{{ page..date | date: "%Y-%m-%dT00:00Z" }}",
     "image" : "{{ page.image }}",
-    "articleBody" : "{{ content }}"
+    "articleBody" : "{{ content }}",
+    "headline" : "{{ content }}"
   }
 </script>
