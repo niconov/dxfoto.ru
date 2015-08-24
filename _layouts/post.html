@@ -41,3 +41,13 @@ layout: default
   </div>
   <div class="pure-u-md-6-24 pure-u-1"> </div>
 </div>
+<script type="application/ld+json">
+  {
+    "@context" : "http://schema.org",
+    "@type" : "Article",
+    "name" : "{{ page.title }}",
+    "datePublished" : "{{ page..date | date: "%Y %m %d" }}",
+    "image" : "{{ page.image }}",
+    "articleBody" : "{{ content }}"
+  }
+</script>
