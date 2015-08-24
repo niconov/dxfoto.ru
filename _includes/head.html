@@ -1,17 +1,18 @@
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="google-site-verification" content="ZvPmagH8g2Vclme_oEBYqPb_5GxlVBZtDdk8a2GHlTg" />
   <title>{{ site.title }}</title>
   {% unless page.og.exclude == "yes" %}
     {% include og.html %}
   {% endunless %}
-  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ site.url }}/feed.xml" />
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css" />
   <!--[if lte IE 8]>
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-old-ie-min.css">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-old-ie-min.css" />
   <![endif]-->
   <!--[if gt IE 8]><!-->
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css" />
   <!--<![endif]-->
   <!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
   <link href="http://fonts.googleapis.com/css?family=Roboto:400,300,400italic,700&subset=latin,cyrillic" rel="stylesheet" type="text/css" />
