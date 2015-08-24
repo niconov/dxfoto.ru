@@ -46,9 +46,9 @@ layout: default
     "@context" : "http://schema.org",
     "@type" : "Article",
     "name" : "{{ page.title }}",
-    "datePublished" : "{{ page..date | date: "%Y-%m-%dT00:00Z" }}",
+    "datePublished" : "{{ page.date | date_to_xmlschema }}",
     "image" : "{{ page.image }}",
-    "articleBody" : "{{ page.content }}",
-    "headline" : "{{ page.content }}"
+    "articleBody" : "{{ page.content | xml_escape }}",
+    "headline" : "{{ page.content | xml_escape }}"
   }
 </script>
