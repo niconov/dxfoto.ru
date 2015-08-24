@@ -22,7 +22,7 @@ layout: default
 </div>
 <div class="pure-g pic">
   <div class="pure-u-1">
-    <img src="{{ page.image }}.jpg" class="pure-img" />
+    <img src="{{ page.image }}.jpg" class="pure-img" alt="{{ page.title }}" />
   </div>
 </div>
 <div class="pure-g text">
@@ -48,7 +48,7 @@ layout: default
     "name" : "{{ page.title }}",
     "datePublished" : "{{ page.date | date_to_xmlschema }}",
     "image" : "{{ page.image }}",
-    "articleBody" : "{{ page.content | xml_escape }}",
-    "headline" : "{{ page.content | xml_escape }}"
+    "articleBody" : "{{ page.content | strip_newlines }}",
+    "headline" : "{{ page.content | strip_newlines }}"
   }
 </script>
