@@ -61,6 +61,12 @@ a {
 .meta {
   font-size: 0.9em;
 }
+.meta ul {
+  list-style-type: none;
+}
+.meta ul li {
+  display: inline-block;
+}
 .footer {
   background-color: #b25d5d;
   color: #f0f0f0;
