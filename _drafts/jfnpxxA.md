@@ -1,0 +1,12 @@
+---
+layout: post
+title:  Розовый
+date:   2015-08-31 00:00:00
+image: http://imgur.com/jfnpxxA
+author: Г.Д.
+gear: E-300 / 35mm macro
+shoot_date: 2014 09 14
+location: Ельбаза
+---
+
+Лишайник _Dibaeis baeomyces_. Ничего толкового про него почитать я не нашёл и рассказать мне про него совершенно нечего.

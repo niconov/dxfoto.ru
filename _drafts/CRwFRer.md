@@ -1,0 +1,12 @@
+---
+layout: post
+title:  Колючка
+date:   2015-08-29 00:00:00
+image: http://imgur.com/CRwFRer
+author: Д.Г.
+gear: E-300 / 35mm macro
+shoot_date: 2014 05 10
+location: Нахабино
+---
+
+Колючая проволока (вдаль километрит, обырвки резины, колёса и шлак... О чём это я?)
