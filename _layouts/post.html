@@ -32,12 +32,31 @@ layout: default
       <h2 itemprop="name">{{ page.title }}</h2>
       <div itemprop="description">{{ content }}</div>
       <div class="meta">
+        <hr />
         <ul>
           <li><a href="#" class="pure-menu-link"><i class="fa fa-map-marker"></i> {{ page.location }}</a></li>
           <li><a href="#" class="pure-menu-link" itemprop="dateCreated" dateTime="{{ page.shoot_date }}"><i class="fa fa-calendar"></i> {{ page.shoot_date }}</a></li>
           <li><a href="#" class="pure-menu-link" itemprop="creator" content="{{ page.author }}"><i class="fa fa-user"></i> {{ page.author }}</a></li>
           <li><a href="#" class="pure-menu-link"><i class="fa fa-camera"></i> {{ page.gear }}</a></li>
         </ul>
+        {% if page.links %}
+          <hr />
+          <ul>
+            {% for link in page.links %}
+              <li>
+                <a href="{{ link.href }}" class="pure-menu-link">
+                  <i class="fa fa-link"></i>
+                  <b>{{ link.info }}</b>:
+                  {% if link.title %}
+                    {{ link.title }}
+                  {% else %}
+                    {{ link.href }}
+                  {% endif %}
+                </a>
+              </li><br />
+            {% endfor %}
+          </ul>
+        {% endif %}
       </div>
     </div>
     <div class="pure-u-md-6-24 pure-u-1"> </div>
