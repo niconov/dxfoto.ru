@@ -1,19 +1,19 @@
 <!-- opengraph -->
-<meta name="og:url" property="og:url" content="http://www.dxfoto.ru{{ page.url }}">
-<meta name="og:locale" property="og:locale" content="ru_RU">
-<meta name="og:type" property="og:type" content="article">
-<meta name="og:title" property="og:title" content="{{ page.title }}">
-<meta name="og:description" property="og:description" content="{{ page.content }}">
-<meta name="og:image" property="og:image" content="{{ page.image }}.jpg">
-<meta name="og:locale" property="og:locale" content="ru_RU">
+<meta property="og:url" content="http://www.dxfoto.ru{{ page.url }}">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:type" content="article">
+<meta property="og:title" content="{{ page.title }}">
+<meta property="og:description" content="{{ page.content | markdownify | strip_html | xml_escape }}">
+<meta property="og:image" content="{{ page.image }}.jpg">
+<meta property="og:locale" content="ru_RU">
 <!-- twitter card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@dxfoto_ru">
 <!--<meta name="twitter:creator" content="@at8eqeq3">-->
 <meta name="twitter:title" content="{{ page.title }}">
-<meta name="twitter:description" content="{{ page.content }}">
+<meta name="twitter:description" content="{{ page.content | markdownify | strip_html | | xml_escape }}">
 <meta name="twitter:image" content="{{ page.image }}.jpg">
 <!-- vk -->
 <meta name="title" content="{{ page.title }}">
-<meta name="description" content="{{ page.content }}">
+<meta name="description" content="{{ page.content | markdownify | strip_html | | xml_escape }}">
 <link rel="image_src" href="{{ page.image }}.jpg">
