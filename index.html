@@ -19,6 +19,57 @@ og:
       {% endif %}
     </div>
   {% endfor %}
+
+  <style>
+.index .full .item {
+  display: inline-block;
+  margin-left: 2em;
+  margin-right: 2em;
+}
+.index .full .item .left {
+  display: inline-block;
+  text-align: right;
+}
+.index .full .item .right {
+  display: inline-block;
+}
+.index .full .item .right .day {
+  font-size: 3em;
+  line-height: 1em;
+  font-weight: 100;
+}
+.index .full .item .left .title {
+  vertical-align: middle;
+  font-weight: 300;
+}
+.index .full .item .left .month-year {
+  vertical-align: middle;
+  font-weight: 100;
+}
+
+
+
+  </style>
+  <div class="pure-u-24-24 full">
+    {% for post in site.posts %}
+      <div class="item">
+        <div class="left">
+          <div class="title">
+            <a href="{{ post.url }}">{{ post.title }}</a>
+          </div>
+          <div class="month-year">
+            {{ post.date | date: "%Y" }} {{ post.date | date: "%m" }}
+          </div>
+        </div>
+        <div class="right">
+          <div class="day">
+            {{ post.date | date: "%d" }}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
   {% assign prv_y = "9999" %}
   {% assign prv_m = "13" %}
   <div class="pure-u-24-24">
