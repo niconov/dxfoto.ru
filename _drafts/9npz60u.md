@@ -1,0 +1,17 @@
+---
+layout: post
+title:  Огурец
+date:   2015-10-19 00:00:00
+image: http://imgur.com/9npz60u
+author: Д.Г.
+gear: 70D / 55-250mm
+shoot_date: 2015 10 17
+location: Агрогородок
+links:
+  -
+    href: http://www.inaturalist.org/taxa/48618-Echinocystis-lobata
+    info: inat
+    title: Echinocystis lobata
+---
+
+Вскрывшийся плод эхиноцистиса как бы угрожает.
