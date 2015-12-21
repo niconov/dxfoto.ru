@@ -7,11 +7,11 @@ og:
 <div class="pure-g index">
   {% for i in (0..11) %}
     {% assign post = site.posts[i] %}
-    <div class="pure-u-12-24 pure-u-sm-8-24 pure-u-md-6-24 pure-u-lg-2-24 index-item">
+    <div class="pure-u-12-24 pure-u-sm-8-24 pure-u-md-6-24 index-item">
       {% if post %}
-        {{ post.date | date: "%Y %m %d" }}
-        <a href="{{ post.url }}"><img src="{{ post.image }}b.jpg" alt="{{ post.title }}" class="pure-img" /></a>
-        <a href="{{ post.url }}">{{ post.title }}</a>
+
+        <a href="{{ post.url }}" title="{{post.date | date: "%Y %m %d" }} • {{ post.title }}"><img src="{{ post.image }}l.jpg" alt="{{ post.title }}" class="pure-img" /></a>
+
       {% else %}
         <i class="fa fa-ellipsis-h"></i>
         <img src="/stub.png" class="pure-img" />
