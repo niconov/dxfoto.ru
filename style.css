@@ -102,3 +102,32 @@ a {
 .index .post-link {
   padding-left: 4em;
 }
+
+.index .full .item {
+  display: inline-block;
+  margin-left: 2em;
+  margin-right: 2em;
+}
+.index .full .item .left {
+  display: inline-block;
+  text-align: right;
+}
+.index .full .item .right {
+  display: inline-block;
+}
+.index .full .item .right .day {
+  font-size: 3em;
+  line-height: 1em;
+  font-weight: 100;
+}
+.index .full .item .left .title {
+  vertical-align: middle;
+  font-weight: 300;
+}
+.index .full .item .left .month-year {
+  vertical-align: middle;
+  font-weight: 100;
+}
+.index .full .divider {
+  margin-top: 32px;
+}
