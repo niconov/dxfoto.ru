@@ -5,6 +5,7 @@
   <meta name="msvalidate.01" content="6C0A1671D6DA96989607846EF49015FD" />
   <title>
     {% if page.title %}
+      {{ page.date | date: "%Y %m %d" }} •
       {{ page.title }} •
     {% endif %}
     {{ site.title }}

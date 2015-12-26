@@ -1,0 +1,17 @@
+---
+layout: post
+title:  Очиток
+date:   2015-10-18 00:00:00
+image: http://imgur.com/WFnytLY
+author: Д.Г.
+gear: 70D / 55-250mm
+shoot_date: 2015 10 17
+location: Агрогородок
+links:
+  -
+    href: http://www.inaturalist.org/taxa/356121-Sedum-telephium
+    info: inat
+    title: Sedum telephium
+---
+
+Замерзшие цветы заячьей капусты.

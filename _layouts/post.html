@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-<div itemscope itemtype=http://schema.org/Photograph>
+<div itemscope itemtype="http://schema.org/Photograph">
   <div class="pure-g links">
     <div class="pure-u-6-24 left">
       {% if page.previous %}
@@ -23,7 +23,8 @@ layout: default
   </div>
   <div class="pure-g pic">
     <div class="pure-u-1">
-      <img itemprop="image" src="{{ page.image }}.jpg" class="pure-img" alt="{{ page.title }}" />
+      <!--<img itemprop="image" src="{{ page.image }}.jpg" class="pure-img" alt="{{ page.title }}" />-->
+      <img itemprop="image" src="http://res.cloudinary.com/dxfoto-ru/t_large/{{page.date | date: "%Y"}}/{{page.date | date: "%m"}}/{{page.date | date: "%Y-%m-%d"}}.jpg" class="pure-img" alt="{{ page.title }}" />
     </div>
   </div>
   <div class="pure-g text">
