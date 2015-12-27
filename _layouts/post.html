@@ -58,6 +58,13 @@ layout: default
             {% endfor %}
           </ul>
         {% endif %}
+        <hr />
+        <i class="fa fa-cloud-download"></i> Скачать:
+        <a href="http://res.cloudinary.com/dxfoto-ru/{{page.date | date: "%Y"}}/{{page.date | date: "%m"}}/{{page.date | date: "%Y-%m-%d"}}.jpg">Исходный *</a> |
+        <a href="http://res.cloudinary.com/dxfoto-ru/t_large/{{page.date | date: "%Y"}}/{{page.date | date: "%m"}}/{{page.date | date: "%Y-%m-%d"}}.jpg">2048 ⨉ ?</a> |
+        <a href="http://res.cloudinary.com/dxfoto-ru/t_medium/{{page.date | date: "%Y"}}/{{page.date | date: "%m"}}/{{page.date | date: "%Y-%m-%d"}}.jpg">1024 ⨉ ?</a> |
+        <a href="http://res.cloudinary.com/dxfoto-ru/t_small/{{page.date | date: "%Y"}}/{{page.date | date: "%m"}}/{{page.date | date: "%Y-%m-%d"}}.jpg">512 ⨉ 512</a> |
+        <p><small>* "исходный" тут значит "такой, какой загружен в CDN", это не всегда соответствует наибольшему существующему размеру картинки.</small></p>
       </div>
     </div>
     <div class="pure-u-md-6-24 pure-u-1"> </div>
