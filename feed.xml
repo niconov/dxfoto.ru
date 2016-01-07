@@ -14,7 +14,11 @@ layout: null
     {% for post in site.posts limit:10 %}
       <item>
         <title>{{ post.title | xml_escape }}</title>
-        <description>&lt;img src="{{ post.image }}h.jpg" alt="{{ post.title }}" title="{{ post.content | markdownify | strip_html | xml_escape }}" &gt;</description>
+        <description>&lt;img 
+src="http://res.cloudinary.com/dxfoto-ru/t_medium/{{post.date | date: 
+"%Y"}}/{{post.date | date: "%m"}}/{{post.date | date: "%Y-%m-%d"}}.jpg" alt="{{ 
+post.title }}" title="{{ post.content | markdownify | strip_html | xml_escape 
+}}" &gt;</description>
         <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
         <link>{{ post.url | prepend: site.baseurl | prepend: site.url }}</link>
         <guid isPermaLink="true">{{ post.url | prepend: site.baseurl | prepend: site.url }}</guid>
