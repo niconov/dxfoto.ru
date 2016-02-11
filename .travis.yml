@@ -1,4 +1,5 @@
 language: ruby
+cache: bundler
 rvm:
   - 2.2
 script:
@@ -9,3 +10,4 @@ branches:
 deploy:
   skip_cleanup: true
   provider: azure_web_apps
+  on: gh-pages
