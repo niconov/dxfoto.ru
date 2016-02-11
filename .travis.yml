@@ -1,0 +1,11 @@
+language: ruby
+rvm:
+  - 2.2
+script:
+  - bundle exec jekyll build
+branches:
+  only:
+    - gh-pages
+deploy:
+  skip_cleanup: true
+  provider: azure_web_apps
