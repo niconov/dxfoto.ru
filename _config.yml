@@ -8,3 +8,5 @@ url: "http://www.dxfoto.ru" # the base hostname & protocol for your site
 permalink: /:year/:month/:day.html
 # Build settings
 #markdown: kramdown
+exclude:
+  - vendor
