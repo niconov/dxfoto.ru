@@ -8,11 +8,12 @@ branches:
   only:
     - gh-pages
 after_success:
-  - echo -e \!_site > .gitignore
+  - rm -f .gitignore
+  #- echo -e \!_site > .gitignore
   - TRAVIS_COMMIT=$(git log --format=%B -n 1)
   - git add .
   - git commit -m "$TRAVIS_COMMIT"
-  - git push --force --quiet https://$AZURE_WA_USERNAME:$AZURE_WA_PASSWORD@$AZURE_WA_SITE.scm.azurewebsites.net:443/$AZURE_WA_SITE.git HEAD:master
+  - git push --force https://$AZURE_WA_USERNAME:$AZURE_WA_PASSWORD@$AZURE_WA_SITE.scm.azurewebsites.net:443/$AZURE_WA_SITE.git HEAD:master
 #deploy:
 #  skip_cleanup: true
 #  provider: azure_web_apps
