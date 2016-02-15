@@ -7,6 +7,8 @@ script:
 branches:
   only:
   - gh-pages
+after_success:
+  - rm -f .gitignore && touch .gitignore
 deploy:
   provider: s3
   bucket: www-dxfoto-ru
