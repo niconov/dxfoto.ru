@@ -9,6 +9,11 @@ branches:
   - gh-pages
 after_success:
   - rm -f .gitignore && touch .gitignore
+  - git config --global user.name "Travis CI"
+  - git config --global user.email "nobody@nowhere.org"
+  - TRAVIS_COMMIT=$(git log --format=%B -n 1)
+  - git add .
+  - git commit -m "$TRAVIS_COMMIT"
 deploy:
   provider: s3
   bucket: www-dxfoto-ru
