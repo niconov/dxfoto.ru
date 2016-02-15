@@ -19,6 +19,7 @@ deploy:
   bucket: www-dxfoto-ru
   local-dir: _site
   acl: public_read
+  region: eu-west-1
   on:
     repo: at8eqeq3/dxfoto.ru
     branch: gh-pages
