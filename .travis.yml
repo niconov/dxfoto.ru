@@ -1,23 +1,25 @@
 language: ruby
 cache: bundler
 rvm:
-  - 2.2
+- 2.2
 script:
-  - bundle exec jekyll build
+- bundle exec jekyll build
 branches:
   only:
-    - gh-pages
+  - gh-pages
 after_success:
   - rm -f .gitignore && touch .gitignore
-  #- echo -e \!_site > .gitignore
   - git config --global user.name "Travis CI"
   - git config --global user.email "nobody@nowhere.org"
   - TRAVIS_COMMIT=$(git log --format=%B -n 1)
   - git add .
   - git commit -m "$TRAVIS_COMMIT"
-  - git push --force https://$AZURE_WA_USERNAME:$AZURE_WA_PASSWORD@$AZURE_WA_SITE.scm.azurewebsites.net:443/$AZURE_WA_SITE.git HEAD:master
-#deploy:
-#  skip_cleanup: true
-#  provider: azure_web_apps
-#  on: gh-pages
-#  verbose: true
+deploy:
+  provider: s3
+  bucket: www-dxfoto-ru
+  local-dir: _site
+  acl: public_read
+  region: eu-west-1
+  on:
+    repo: at8eqeq3/dxfoto.ru
+    branch: gh-pages
