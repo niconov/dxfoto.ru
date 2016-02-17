@@ -93,6 +93,16 @@ a {
   text-align: center;
   /*margin-top: 8px;*/
 }
+
+.index-item img {
+  filter: saturate(10%) contrast(110%);
+  transition: filter 2s;
+}
+
+.index-item img:hover {
+  filter: unset;
+}
+
 .index h1 {
   padding-left: 1em;
 }
