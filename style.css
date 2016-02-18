@@ -103,6 +103,7 @@ a {
 
 .index-item img:hover {
   filter: unset;
+  -webkit-filter: none;
 }
 
 .index h1 {
