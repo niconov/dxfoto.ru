@@ -96,7 +96,9 @@ a {
 
 .index-item img {
   filter: saturate(10%) contrast(110%);
-  transition: filter 2s;
+  -webkit-filter: saturate(10%) contrast(110%);
+  transition: filter 2s, -webkit-filter 2s;
+  -webkit-transition: -webkit-filter 2s;
 }
 
 .index-item img:hover {
