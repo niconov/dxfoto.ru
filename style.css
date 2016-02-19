@@ -144,3 +144,14 @@ a {
 .index .full .divider {
   margin-top: 32px;
 }
+
+.gear a:after {
+  content: ' / ';
+}
+.gear a:last-of-type:after {
+  content: none;
+}
+
+.gear-page .item {
+  margin-bottom: 1em;
+}

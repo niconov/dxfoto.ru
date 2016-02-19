@@ -1,0 +1,24 @@
+---
+layout: default
+og:
+  exclude: 'yes'
+---
+
+<div class="pure-g gear-page">
+  <div class="pure-u-24-24 center">
+    <strong>Железки и стекляшки</strong>
+  </div>
+  {% for g in site.data.gear %}
+    <div class="item">
+      <div class="pure-u-md-6-24 pure-u-1"> </div>
+      <div class="pure-u-md-4-24 pure-u-1">
+        <img src="/stub.png" class="pure-img" />
+      </div>
+      <div class="pure-u-md-8-24 pure-u-1">
+        <h3><a name="{{ g[0] }}">{{ g[1].name }}</a></h3>
+        <p>{{ g[1].description }}</p>
+      </div>
+      <div class="pure-u-md-6-24 pure-u-1"> </div>
+    </div>
+  {% endfor %}
+</div>
