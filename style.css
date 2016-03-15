@@ -95,10 +95,10 @@ a {
 }
 
 .index-item img {
-  filter: saturate(10%) contrast(110%);
-  -webkit-filter: saturate(10%) contrast(110%);
-  transition: filter 2s, -webkit-filter 2s;
-  -webkit-transition: -webkit-filter 2s;
+  filter: saturate(15%) contrast(110%);
+  -webkit-filter: saturate(15%) contrast(110%);
+  transition: filter 1s, -webkit-filter 1s;
+  -webkit-transition: -webkit-filter 1s;
 }
 
 .index-item img:hover {
