@@ -10,3 +10,4 @@ permalink: /:year/:month/:day.html
 #markdown: kramdown
 exclude:
   - vendor
+test: <%= ENV['TEST'] %>
