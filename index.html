@@ -11,7 +11,7 @@ og:
       {% if post %}
         <a href="{{ post.url }}" title="{{post.date | date: "%Y %m %d" }} • {{ post.title }}">
           <!--<img src="{{ post.image }}l.jpg" alt="{{ post.title }}" class="pure-img" />-->
-          <img src="http://res.cloudinary.com/dxfoto-ru/image/upload/t_small/{{post.date | date: "%Y"}}/{{post.date | date: "%m"}}/{{post.date | date: "%Y-%m-%d"}}.jpg" class="pure-img" alt="{{ post.title }}" />
+          <img src="https://res.cloudinary.com/dxfoto-ru/image/upload/t_small/{{post.date | date: "%Y"}}/{{post.date | date: "%m"}}/{{post.date | date: "%Y-%m-%d"}}.jpg" class="pure-img" alt="{{ post.title }}" />
         </a>
       {% else %}
         <i class="fa fa-ellipsis-h"></i>
