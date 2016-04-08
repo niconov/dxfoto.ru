@@ -66,6 +66,44 @@ layout: default
         <a href="https://res.cloudinary.com/dxfoto-ru/t_medium/{{page.date | date: "%Y"}}/{{page.date | date: "%m"}}/{{page.date | date: "%Y-%m-%d"}}.jpg">1024 ⨉ ?</a> |
         <a href="https://res.cloudinary.com/dxfoto-ru/t_small/{{page.date | date: "%Y"}}/{{page.date | date: "%m"}}/{{page.date | date: "%Y-%m-%d"}}.jpg">512 ⨉ 512</a> |
         <p><small>* "исходный" тут значит "такой, какой загружен в CDN", это не всегда соответствует наибольшему существующему размеру картинки.</small></p>
+        <!-- automated meta -->
+        {% assign y = page.date | date: '%Y' %}
+        {% assign m = page.date | date: '%m' %}
+        {% assign d = page.date | date: '%Y-%m-%d' %}
+        <!-- tags -->
+        {% assign tags = site.data.tags[y][m][d]['results'][0]['tags'] %}
+        {% if tags %}
+          <style>
+            .tags .tag {
+              padding-left: 1em;
+              padding-right: 1em;
+            }
+          </style>
+          <div class="tags" itemprop="keywords">
+            <i class="fa fa-tags"></i>
+            {% for tag in tags %}
+              <span class="tag" style="filter: opacity({{ 100 | plus: tag['confidence'] | divided_by: 2 }}%)">{{ tag['tag'] }}</span>
+            {% endfor %}
+          </div>
+        {% else %}
+          <p>No tags</p>
+        {% endif %}
+        <!-- colors -->
+        {% assign colors = site.data.colors[y][m][d]['data'] %}
+        {% if colors %}
+          <style>
+            .colors {
+              width: 100%;
+            }
+            .colors .color {
+              display: inline-block;
+              height: 1em;
+            }
+          </style>
+          <div class="colors">
+            {% for color in colors %}<div class="color" style="width: {{ color['percentage'] }}%; background-color: {{ color['color']['hex_color'] }};"> </div>{% endfor %}
+          </div>
+        {% endif %}
       </div>
     </div>
     <div class="pure-u-md-6-24 pure-u-1"> </div>

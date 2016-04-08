@@ -1,2 +1,6 @@
 _site
 .sass-cache
+_data/colors/*
+_data/exif/*
+_data/jobs/*
+_data/tags/*
