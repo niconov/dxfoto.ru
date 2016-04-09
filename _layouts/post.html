@@ -24,8 +24,7 @@ layout: default
   </div>
   <div class="pure-g pic">
     <div class="pure-u-1">
-      <!--<img itemprop="image" src="{{ page.image }}.jpg" class="pure-img" alt="{{ page.title }}" />-->
-      <img itemprop="image" src="https://res.cloudinary.com/dxfoto-ru/t_large/{{page.date | date: "%Y"}}/{{page.date | date: "%m"}}/{{page.date | date: "%Y-%m-%d"}}.jpg" class="pure-img" alt="{{ page.title }}" />
+      <img itemprop="image" src="{% img_src l %}" class="pure-img" alt="{{ page.title }}" />
     </div>
   </div>
   <div class="pure-g text">
@@ -61,10 +60,10 @@ layout: default
         {% endif %}
         <hr />
         <i class="fa fa-cloud-download"></i> Скачать:
-        <a href="https://res.cloudinary.com/dxfoto-ru/{{page.date | date: "%Y"}}/{{page.date | date: "%m"}}/{{page.date | date: "%Y-%m-%d"}}.jpg">Исходный *</a> |
-        <a href="https://res.cloudinary.com/dxfoto-ru/t_large/{{page.date | date: "%Y"}}/{{page.date | date: "%m"}}/{{page.date | date: "%Y-%m-%d"}}.jpg">2048 ⨉ ?</a> |
-        <a href="https://res.cloudinary.com/dxfoto-ru/t_medium/{{page.date | date: "%Y"}}/{{page.date | date: "%m"}}/{{page.date | date: "%Y-%m-%d"}}.jpg">1024 ⨉ ?</a> |
-        <a href="https://res.cloudinary.com/dxfoto-ru/t_small/{{page.date | date: "%Y"}}/{{page.date | date: "%m"}}/{{page.date | date: "%Y-%m-%d"}}.jpg">512 ⨉ 512</a> |
+        <a href="{% img_src f %}">Исходный *</a> |
+        <a href="{% img_src l %}">2048 ⨉ ?</a> |
+        <a href="{% img_src m %}">1024 ⨉ ?</a> |
+        <a href="{% img_src s %}">512 ⨉ 512</a> |
         <p><small>* "исходный" тут значит "такой, какой загружен в CDN", это не всегда соответствует наибольшему существующему размеру картинки.</small></p>
         <!-- automated meta -->
         {% assign y = page.date | date: '%Y' %}
