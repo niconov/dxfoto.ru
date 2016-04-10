@@ -3,13 +3,18 @@ module Jekyll
     def initialize(tag_name, text, tokens)
       super
       @text = text
+      size, date = @text.split(' ', 2)
+      puts date.to_s unless date.strip == ''
       @tokens = tokens
     end
     def render(context)
-      #puts @tokens
-      return unless context.registers.key? :page
-
-      page_date = context.registers[:page]['date']
+      size, date = @text.split(' ', 2)
+      page_date = nil
+      if date.to_s.match(/\d{4}-\d{2}-\d{2}/)
+        page_date = date
+      else
+        page_date = context.registers[:page]['date'] if context.registers.key? :page\
+      end
       return if page_date.nil?
 
       url_part = page_date.strftime('%Y/%m/%Y-%m-%d')
@@ -17,7 +22,7 @@ module Jekyll
       # thres is a date of first photo in S3
       thres = Time.new(2016, 02, 17)
       if page_date >= thres
-        case @text
+        case size
         when 'l'
           "http://img.dxfoto.ru/l/#{url_part}.jpg"
         when 'm'
@@ -28,7 +33,7 @@ module Jekyll
           "http://hd.dxfoto.ru/#{url_part}.jpg"
         end
       else
-        case @text
+        case size
         when 'l'
           "https://res.cloudinary.com/dxfoto-ru/t_large/#{url_part}.jpg"
         when 'm'

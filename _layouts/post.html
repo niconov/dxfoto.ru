@@ -107,23 +107,6 @@ layout: default
         <a href="{% img_src m %}">1024 ⨉ ?</a> |
         <a href="{% img_src s %}">512 ⨉ 512</a> |
         <p><small>* "исходный" тут значит "такой, какой загружен в CDN", это не всегда соответствует наибольшему существующему размеру картинки.</small></p>
-
-        <!-- colors -->
-        {% assign colors = site.data.colors[y][m][d]['data'] %}
-        {% if colors %}
-          <style>
-            .colors {
-              width: 100%;
-            }
-            .colors .color {
-              display: inline-block;
-              height: 1em;
-            }
-          </style>
-          <div class="colors">
-            {% for color in colors %}<div class="color" style="width: {{ color['percentage'] }}%; background-color: {{ color['color']['hex_color'] }};"> </div>{% endfor %}
-          </div>
-        {% endif %}
       </div>
     </div>
     <div class="pure-u-md-6-24 pure-u-1"> </div>
