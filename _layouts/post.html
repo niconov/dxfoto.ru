@@ -1,7 +1,6 @@
 ---
 layout: default
 ---
-{% img_src s %}
 <div itemscope itemtype="http://schema.org/Photograph">
   <div class="pure-g links">
     <div class="pure-u-6-24 left">
@@ -11,8 +10,8 @@ layout: default
         <a href="#"><i class="fa fa-times"></i></a>
       {% endif %}
     </div>
-    <div class="pure-u-12-24 center" itemprop="datePublished">
-      <strong>{{ page.date | date: "%Y %m %d" }}</strong>
+    <div class="pure-u-12-24 center">
+      <strong><time itemprop="datePublished" datetime="{{ page.date | date: "%Y-%m-%d" }}">{{ page.date | date: "%Y %m %d" }}</time></strong>
     </div>
     <div class="pure-u-6-24 right">
       {% if page.next %}
@@ -32,20 +31,18 @@ layout: default
     <div class="pure-u-md-12-24 pure-u-1">
       <h2 itemprop="name">{{ page.title }}</h2>
       <div itemprop="description">{{ content }}</div>
-      <div class="meta">
+      <div class="meta tags">
         <hr />
-        <ul>
-          <li><a href="#" class="pure-menu-link"><i class="fa fa-map-marker"></i> {{ page.location }}</a></li>
-          <li><a href="#" class="pure-menu-link" itemprop="dateCreated" dateTime="{{ page.shoot_date }}"><i class="fa fa-calendar"></i> {{ page.shoot_date }}</a></li>
-          <li><a href="#" class="pure-menu-link" itemprop="creator" content="{{ page.author }}"><i class="fa fa-user"></i> {{ page.author }}</a></li>
-          <li><a href="#" class="pure-menu-link"><i class="fa fa-camera"></i> {{ page.gear }}</a></li>
-        </ul>
+        <i class="fa fa-map-marker"></i><span class="tag">{{ page.location }}</span>
+        <i class="fa fa-calendar"></i><span class="tag" itemprop="dateCreated" dateTime="{{ page.shoot_date }}">{{ page.shoot_date }}</span>
+        <i class="fa fa-user"></i><span class="tag" itemprop="creator">{{ page.author }}</span>
+        <i class="fa fa-camera"></i><span class="tag">{{ page.gear }}</span>
         {% if page.links %}
           <hr />
           <ul>
             {% for link in page.links %}
               <li>
-                <a href="{{ link.href }}" class="pure-menu-link">
+                <a href="{{ link.href }}" class="pure-menu-link" itemprop="sameAs">
                   <i class="fa fa-link"></i>
                   <b>{{ link.info }}</b>:
                   {% if link.title %}
@@ -118,7 +115,7 @@ layout: default
     "name" : "{{ page.title }}",
     "datePublished" : "{{ page.date | date_to_xmlschema }}",
     "image" : "{{ page.image }}",
-    "articleBody" : "{{ page.content | strip_newlines }}",
-    "headline" : "{{ page.content | strip_newlines }}"
+    "articleBody" : "{{ page.content | strip_html | strip_newlines }}",
+    "headline" : "{{ page.title }}"
   }
 </script>
