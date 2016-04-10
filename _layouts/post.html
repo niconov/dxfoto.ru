@@ -1,6 +1,10 @@
 ---
 layout: default
 ---
+{% assign y = page.date | date: '%Y' %}
+{% assign m = page.date | date: '%m' %}
+{% assign d = page.date | date: '%Y-%m-%d' %}
+{% assign exif = site.data.exif[y][m][d] %}
 <div itemscope itemtype="http://schema.org/Photograph">
   <div class="pure-g links">
     <div class="pure-u-6-24 left">
@@ -33,10 +37,21 @@ layout: default
       <div itemprop="description">{{ content }}</div>
       <div class="meta tags">
         <hr />
-        <i class="fa fa-map-marker"></i><span class="tag">{{ page.location }}</span>
+        <i class="fa fa-map-marker"></i><span itemprop="contentLocation locationCreated" itemscope itemtype="http://schema.org/Place"><span class="tag" itemprop="name">{{ page.location }}</span>
+          {% if exif['GPSPosition'] %}
+            <span itemscope itemtype="http://schema.org/GeoCoordinates" />
+              <meta itemprop="latitude" content="{{ exif['GPSLatitude'] | replace: ' deg', '°' | replace: '"', '″' | replace "'", '′' }}" />
+              <meta itemprop="longitude" content="{{ exif['GPSLongitude'] | replace: ' deg', '°' | replace: '"', '″' | replace "'", '′' }}" />
+            </span>
+          {% endif %}
+        </span>
         <i class="fa fa-calendar"></i><span class="tag" itemprop="dateCreated" dateTime="{{ page.shoot_date }}">{{ page.shoot_date }}</span>
         <i class="fa fa-user"></i><span class="tag" itemprop="creator">{{ page.author }}</span>
         <i class="fa fa-camera"></i><span class="tag">{{ page.gear }}</span>
+
+        {% if exif %}
+          <i class="fa fa-cogs"></i><span class="tag">f/{{ exif['Aperture'] }} {{ exif['ShutterSpeed'] }}s ISO{{ exif['ISO'] }} {{ exif['FocalLength'] }}mm</span>
+        {% endif %}
         {% if page.links %}
           <hr />
           <ul>
@@ -63,9 +78,6 @@ layout: default
         <a href="{% img_src s %}">512 ⨉ 512</a> |
         <p><small>* "исходный" тут значит "такой, какой загружен в CDN", это не всегда соответствует наибольшему существующему размеру картинки.</small></p>
         <!-- automated meta -->
-        {% assign y = page.date | date: '%Y' %}
-        {% assign m = page.date | date: '%m' %}
-        {% assign d = page.date | date: '%Y-%m-%d' %}
         <!-- tags -->
         {% assign tags = site.data.tags[y][m][d]['results'][0]['tags'] %}
         {% if tags %}
