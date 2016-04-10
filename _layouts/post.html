@@ -5,6 +5,16 @@ layout: default
 {% assign m = page.date | date: '%m' %}
 {% assign d = page.date | date: '%Y-%m-%d' %}
 {% assign exif = site.data.exif[y][m][d] %}
+{% assign colors = site.data.colors[y][m][d] %}
+{% if colors['best_guess_background'] %}
+  {% assign bgcolor = colors['best_guess_background'] %}
+{% elsif colors['results'][0]['info']['background_colors'][0]['html_code'] %}
+  {% assign bgcolor = colors['results'][0]['info']['background_colors'][0]['html_code'] %}
+{% else %}
+  {% assign bgcolor = "#ffffff" %}
+{% endif %}
+
+{{ bgcolor }}
 <div itemscope itemtype="http://schema.org/Photograph">
   <div class="pure-g links">
     <div class="pure-u-6-24 left">
@@ -37,20 +47,39 @@ layout: default
       <div itemprop="description">{{ content }}</div>
       <div class="meta tags">
         <hr />
-        <i class="fa fa-map-marker"></i><span itemprop="contentLocation locationCreated" itemscope itemtype="http://schema.org/Place"><span class="tag" itemprop="name">{{ page.location }}</span>
+        <span itemprop="contentLocation" itemscope itemtype="http://schema.org/Place">
           {% if exif['GPSPosition'] %}
-            <span itemscope itemtype="http://schema.org/GeoCoordinates" />
+            <span class="tag" itemprop="name"><i class="fa fa-map-marker"></i><a href="https://www.google.ru/maps/place/{{ exif['GPSPosition'] | replace: ' deg', '°' | replace: '"', '″' | replace "'", '′' }}" itemprop="url">{{ page.location }}</a></span>
+            <span itemprop="geo" itemscope itemtype="http://schema.org/GeoCoordinates" />
               <meta itemprop="latitude" content="{{ exif['GPSLatitude'] | replace: ' deg', '°' | replace: '"', '″' | replace "'", '′' }}" />
               <meta itemprop="longitude" content="{{ exif['GPSLongitude'] | replace: ' deg', '°' | replace: '"', '″' | replace "'", '′' }}" />
             </span>
+          {% else %}
+            <span class="tag" itemprop="name"><i class="fa fa-map-marker"></i>{{ page.location }}</span>
           {% endif %}
         </span>
-        <i class="fa fa-calendar"></i><span class="tag" itemprop="dateCreated" dateTime="{{ page.shoot_date }}">{{ page.shoot_date }}</span>
-        <i class="fa fa-user"></i><span class="tag" itemprop="creator">{{ page.author }}</span>
-        <i class="fa fa-camera"></i><span class="tag">{{ page.gear }}</span>
+        <span class="tag" itemprop="dateCreated" dateTime="{{ page.shoot_date }}"><i class="fa fa-calendar"></i>{{ page.shoot_date }}</span>
+        <span class="tag" itemprop="creator"><i class="fa fa-user"></i>{{ page.author }}</span>
+        <span class="tag"><i class="fa fa-camera"></i>{{ page.gear }}</span>
 
         {% if exif %}
-          <i class="fa fa-cogs"></i><span class="tag">f/{{ exif['Aperture'] }} {{ exif['ShutterSpeed'] }}s ISO{{ exif['ISO'] }} {{ exif['FocalLength'] }}mm</span>
+          <span class="tag"><i class="fa fa-cogs"></i>f/{{ exif['Aperture'] }} {{ exif['ShutterSpeed'] }}s ISO{{ exif['ISO'] }} {{ exif['FocalLength'] }}</span>
+        {% endif %}
+        <!-- tags -->
+        {% assign tags = site.data.tags[y][m][d]['results'][0]['tags'] %}
+        {% if tags %}
+          <hr />
+          {% assign tag_count = tags | size | minus: 1 %}
+          <div class="tags" itemprop="keywords">
+            <i class="fa fa-tags"></i>
+            {% for tag in tags limit:tag_count %}
+              <span class="tag" style="filter: opacity({{ 100 | plus: tag['confidence'] | divided_by: 2 }}%)">{{ tag['tag'] }},</span>
+            {% endfor %}
+            {% assign tag = tags | last %}
+            <span class="tag" style="filter: opacity({{ 100 | plus: tag['confidence'] | divided_by: 2 }}%)">{{ tag['tag'] }}</span>
+          </div>
+        {% else %}
+          <p>No tags</p>
         {% endif %}
         {% if page.links %}
           <hr />
@@ -77,28 +106,7 @@ layout: default
         <a href="{% img_src m %}">1024 ⨉ ?</a> |
         <a href="{% img_src s %}">512 ⨉ 512</a> |
         <p><small>* "исходный" тут значит "такой, какой загружен в CDN", это не всегда соответствует наибольшему существующему размеру картинки.</small></p>
-        <!-- automated meta -->
-        <!-- tags -->
-        {% assign tags = site.data.tags[y][m][d]['results'][0]['tags'] %}
-        {% if tags %}
-          {% assign tag_count = tags | size | minus: 1 %}
-          <style>
-            .tags .tag {
-              padding-left: 0.7em;
-              padding-right: 0.7em;
-            }
-          </style>
-          <div class="tags" itemprop="keywords">
-            <i class="fa fa-tags"></i>
-            {% for tag in tags limit:tag_count %}
-              <span class="tag" style="filter: opacity({{ 100 | plus: tag['confidence'] | divided_by: 2 }}%)">{{ tag['tag'] }},</span>
-            {% endfor %}
-            {% assign tag = tags | last %}
-            <span class="tag" style="filter: opacity({{ 100 | plus: tag['confidence'] | divided_by: 2 }}%)">{{ tag['tag'] }}</span>
-          </div>
-        {% else %}
-          <p>No tags</p>
-        {% endif %}
+
         <!-- colors -->
         {% assign colors = site.data.colors[y][m][d]['data'] %}
         {% if colors %}

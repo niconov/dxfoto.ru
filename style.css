@@ -144,3 +144,11 @@ a {
 .index .full .divider {
   margin-top: 32px;
 }
+
+.tag {
+  padding-right: 1.2em;
+  white-space: nowrap;
+}
+.tag i {
+  padding-right: 0.6em;
+}
