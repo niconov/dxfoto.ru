@@ -3,8 +3,10 @@ module Jekyll
     def initialize(tag_name, text, tokens)
       super
       @text = text
+      @tokens = tokens
     end
     def render(context)
+      #puts @tokens
       return unless context.registers.key? :page
 
       page_date = context.registers[:page]['date']

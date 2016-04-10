@@ -13,8 +13,6 @@ layout: default
 {% else %}
   {% assign bgcolor = "#ffffff" %}
 {% endif %}
-
-{{ bgcolor }}
 <div itemscope itemtype="http://schema.org/Photograph">
   <div class="pure-g links">
     <div class="pure-u-6-24 left">
@@ -36,7 +34,12 @@ layout: default
     </div>
   </div>
   <div class="pure-g pic">
-    <div class="pure-u-1">
+
+    {% if exif['ImageWidth'] %}
+      <div class="pure-u-1 colored-wrapper" style="padding-bottom: {% prop_calc %}; background-color: {{ bgcolor }}">
+    {% else %}
+      <div class="pure-u-1">
+    {% endif %}
       <img itemprop="image" src="{% img_src l %}" class="pure-img" alt="{{ page.title }}" />
     </div>
   </div>
@@ -78,8 +81,6 @@ layout: default
             {% assign tag = tags | last %}
             <span class="tag" style="filter: opacity({{ 100 | plus: tag['confidence'] | divided_by: 2 }}%)">{{ tag['tag'] }}</span>
           </div>
-        {% else %}
-          <p>No tags</p>
         {% endif %}
         {% if page.links %}
           <hr />
