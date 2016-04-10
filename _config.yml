@@ -11,3 +11,4 @@ permalink: /:year/:month/:day.html
 exclude:
   - vendor
 test: <%= ENV['TEST'] %>
+gems: [aws-sdk]
