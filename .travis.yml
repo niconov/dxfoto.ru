@@ -22,4 +22,4 @@ deploy:
   region: eu-west-1
   on:
     repo: at8eqeq3/dxfoto.ru
-    branch: gh-pages
+    branch: deploy-aerobatic
