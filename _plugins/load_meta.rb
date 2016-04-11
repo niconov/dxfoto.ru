@@ -2,6 +2,7 @@ require 'aws-sdk'
 require 'fileutils'
 Jekyll::Hooks.register :site, :after_reset do |site|
   unless Dir.entries(site.config['source'] + '/_data/').include? 'tags'
+    Aws.config.update region: 'eu-west-1'
     s3 = Aws::S3::Client.new
     resp = s3.list_objects(bucket: 'meta-dxfoto-ru')
     resp.contents.each do |m|
