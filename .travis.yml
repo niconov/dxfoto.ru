@@ -6,7 +6,7 @@ script:
 - bundle exec jekyll build
 branches:
   only:
-  - gh-pages
+  - deploy-aerobatic
 after_success:
   - rm -f .gitignore && touch .gitignore
   - git config --global user.name "Travis CI"
