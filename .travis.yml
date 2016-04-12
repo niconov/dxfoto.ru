@@ -16,7 +16,7 @@ after_success:
   - git commit -m "$TRAVIS_COMMIT"
 deploy:
   provider: s3
-  bucket: www-dxfoto-ru
+  bucket: www.dxfoto.ru
   local-dir: _site
   acl: public_read
   region: eu-west-1
