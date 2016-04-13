@@ -9,7 +9,6 @@ Jekyll::Hooks.register :site, :after_reset do |site|
     resp.contents.each do |m|
       next unless (m.key.start_with?('tags') || m.key.start_with?('exif') || m.key.start_with?('colors')) && m.key.end_with?('.json')
       d = site.config['source'] + '/_data/' + m.key.split('/')[0..-2].join('/')
-      puts d
       FileUtils.mkdir_p d
       s3.get_object response_target: site.config['source'] + '/_data/' + m.key,
                     bucket: 'meta-dxfoto-ru',
