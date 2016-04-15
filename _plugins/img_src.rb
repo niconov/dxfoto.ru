@@ -24,13 +24,13 @@ module Jekyll
       if page_date >= thres
         case size
         when 'l'
-          "http://img.dxfoto.ru/l/#{url_part}.jpg"
+          "https://img.dxfoto.ru/l/#{url_part}.jpg"
         when 'm'
-          "http://img.dxfoto.ru/m/#{url_part}.jpg"
+          "https://img.dxfoto.ru/m/#{url_part}.jpg"
         when 's'
-          "http://img.dxfoto.ru/s/#{url_part}.jpg"
+          "https://img.dxfoto.ru/s/#{url_part}.jpg"
         else
-          "http://hd.dxfoto.ru/#{url_part}.jpg"
+          "https://hd.dxfoto.ru/#{url_part}.jpg"
         end
       else
         case size
