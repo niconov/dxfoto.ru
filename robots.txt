@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+Sitemap: http://www.dxfoto.ru/sitemap.xml
+Host: www.dxfoto.ru
