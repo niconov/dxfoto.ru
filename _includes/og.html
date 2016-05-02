@@ -9,12 +9,14 @@
 <meta property="article:author" content="{{ page.author }}">
 <meta property="og:site_name" content="dxfoto.ru">
 {% for link in page.links %}
-  <meta property="og:referenced" content="{{ link.href | xml_escape }}">
+  <meta property="og:referenced" content="{{ link.href | url_escape }}">
 {% endfor %}
 <!-- twitter card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@dxfoto_ru">
-<!--<meta name="twitter:creator" content="@at8eqeq3">-->
+{% if page.author == 'Д.Г.' %}
+  <meta name="twitter:creator" content="@at8eqeq3">
+{% endif %}
 <meta name="twitter:title" content="{{ page.title }}">
 <meta name="twitter:description" content="{{ page.content | markdownify | strip_html | | xml_escape }}">
 <meta name="twitter:image" content="{% img_src m %}">
