@@ -27,7 +27,9 @@
   <!-- end of favicon block -->
   <title>
     {% if page.title %}
-      {{ page.date | date: "%Y %m %d" }} •
+      {% unless page.type == 'archive' %}
+        {{ page.date | date: "%Y %m %d" }} •
+      {% endunless %}
       {{ page.title }} •
     {% endif %}
     {{ site.title }}
