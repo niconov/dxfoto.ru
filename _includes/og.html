@@ -1,3 +1,7 @@
+{% assign y = page.date | date: '%Y' %}
+{% assign m = page.date | date: '%m' %}
+{% assign d = page.date | date: '%Y-%m-%d' %}
+{% assign exif = site.data.exif[y][m][d] %}
 <!-- opengraph -->
 <meta property="og:url" content="http://www.dxfoto.ru{{ page.url }}">
 <meta property="og:locale" content="ru_RU">
@@ -6,16 +10,29 @@
 <meta property="og:description" content="{{ page.content | markdownify | strip_html | xml_escape }}">
 <meta property="og:image" content="{% img_src m %}">
 <meta property="og:locale" content="ru_RU">
-<meta property="article:author" content="{{ page.author }}">
+<meta property="og:rich_attachment" content="true">
+<meta property="article:publisher" content="https://www.facebook.com/dxfoto.ru">
 <meta property="og:site_name" content="dxfoto.ru">
 {% for link in page.links %}
   <meta property="og:referenced" content="{{ link.href | url_escape }}">
 {% endfor %}
+{{ exif }}
+{% if exif['ImageWidth'] %}
+  <meta property="og:image:width" content="{{ exif['ImageWidth'] }}">
+{% endif %}
+{% if exif['ImageHeight'] %}
+  <meta property="og:image:height" content="{{ exif['ImageHeight'] }}">
+{% endif %}
+{% if exif['GPSPosition'] %}
+  <meta property="place:location:latitude" content="{{ exif['GPSLatitude'] | dms2deg }}">
+  <meta property="place:location:longitude" content="{{ exif['GPSLongitude'] | dms2deg }}">
+{% endif %}
 <!-- twitter card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@dxfoto_ru">
 {% if page.author == 'Д.Г.' %}
   <meta name="twitter:creator" content="@at8eqeq3">
+  <meta property="article:author" content="https://www.facebook.com/at8eqeq3">
 {% endif %}
 <meta name="twitter:title" content="{{ page.title }}">
 <meta name="twitter:description" content="{{ page.content | markdownify | strip_html | | xml_escape }}">
