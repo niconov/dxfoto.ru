@@ -8,18 +8,19 @@ branches:
   only:
   - deploy-aerobatic
 after_success:
-  - rm -f .gitignore && touch .gitignore
-  - git config --global user.name "Travis CI"
-  - git config --global user.email "nobody@nowhere.org"
-  - TRAVIS_COMMIT=$(git log --format=%B -n 1)
-  - git add .
-  - git commit -m "$TRAVIS_COMMIT"
-deploy:
-  provider: s3
-  bucket: www.dxfoto.ru
-  local-dir: _site
-  acl: public_read
-  region: eu-west-1
-  on:
-    repo: at8eqeq3/dxfoto.ru
-    branch: deploy-aerobatic
+  - bundle exec s3_website push
+#  - rm -f .gitignore && touch .gitignore
+#  - git config --global user.name "Travis CI"
+#  - git config --global user.email "nobody@nowhere.org"
+#  - TRAVIS_COMMIT=$(git log --format=%B -n 1)
+#  - git add .
+#  - git commit -m "$TRAVIS_COMMIT"
+#deploy:
+#  provider: s3
+#  bucket: www.dxfoto.ru
+#  local-dir: _site
+#  acl: public_read
+#  region: eu-west-1
+#  on:
+#    repo: at8eqeq3/dxfoto.ru
+#    branch: deploy-aerobatic
