@@ -6,6 +6,11 @@
 <meta property="og:description" content="{{ page.content | markdownify | strip_html | xml_escape }}">
 <meta property="og:image" content="{% img_src m %}">
 <meta property="og:locale" content="ru_RU">
+<meta property="article:author" content="{{ page.author }}">
+<meta property="og:site_name" content="dxfoto.ru">
+{% for link in page.links %}
+  <meta property="og:referenced" content="{{ link.href | xml_escape }}">
+{% endfor %}
 <!-- twitter card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@dxfoto_ru">
