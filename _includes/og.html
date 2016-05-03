@@ -16,7 +16,6 @@
 {% for link in page.links %}
   <meta property="og:referenced" content="{{ link.href | url_escape }}">
 {% endfor %}
-{{ exif }}
 {% if exif['ImageWidth'] %}
   <meta property="og:image:width" content="{{ exif['ImageWidth'] }}">
 {% endif %}
@@ -33,6 +32,10 @@
 {% if page.author == 'Д.Г.' %}
   <meta name="twitter:creator" content="@at8eqeq3">
   <meta property="article:author" content="https://www.facebook.com/at8eqeq3">
+  <link rel="author" href="https://plus.google.com/104772387725494763401">
+{% elsif page.author == 'К.С.' %}
+  <meta property="article:author" content="https://www.facebook.com/xenia.selkova">
+  <link rel="author" href="https://plus.google.com/102132620692092060444">
 {% endif %}
 <meta name="twitter:title" content="{{ page.title }}">
 <meta name="twitter:description" content="{{ page.content | markdownify | strip_html | | xml_escape }}">
@@ -40,5 +43,4 @@
 <!-- vk -->
 <meta name="title" content="{{ page.title }}">
 <meta name="description" content="{{ page.content | markdownify | strip_html | | xml_escape }}">
-<!--<link rel="image_src" href="{{ page.image }}.jpg">-->
 <link rel="image_src" href="{% img_src m %}">
