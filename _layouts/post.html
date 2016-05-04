@@ -13,6 +13,25 @@ layout: default
 {% else %}
   {% assign bgcolor = "#ffffff" %}
 {% endif %}
+{% if exif['ImageWidth'] %}
+  {% assign fw = exif['ImageWidth'] %}
+  {% assign fh = exif['ImageHeight'] %}
+  {% assign lw = 2048 %}
+  {% assign mw = 1024 %}
+  {% assign sw = 512 %}
+  {% assign lh = fh | times: lw | divided_by: fw %}
+  {% assign mh = fh | times: mw | divided_by: fw %}
+  {% assign sh = 512 %}
+{% else %}
+  {% assign fw = '?' %}
+  {% assign fh = '?' %}
+  {% assign lw = 2048 %}
+  {% assign mw = 1024 %}
+  {% assign sw = 512 %}
+  {% assign lh = '?' %}
+  {% assign mh = '?' %}
+  {% assign sh = 512 %}
+{% endif %}
 <div itemscope itemtype="http://schema.org/Photograph">
   <div class="pure-g links">
     <div class="pure-u-6-24 left">
@@ -102,10 +121,10 @@ layout: default
         {% endif %}
         <hr />
         <i class="fa fa-cloud-download"></i> Скачать:
-        <a href="{% img_src f %}">Исходный *</a> |
-        <a href="{% img_src l %}">2048 ⨉ ?</a> |
-        <a href="{% img_src m %}">1024 ⨉ ?</a> |
-        <a href="{% img_src s %}">512 ⨉ 512</a> |
+        <a href="{% img_src f %}">Исходный ({{fw}} ⨉ {{ fh }})*</a> |
+        <a href="{% img_src l %}">{{lw}} ⨉ {{ lh }}</a> |
+        <a href="{% img_src m %}">{{mw}} ⨉ {{ mh }}</a> |
+        <a href="{% img_src s %}">{{sw}} ⨉ {{ sh }}</a> |
         <p><small>* "исходный" тут значит "такой, какой загружен в CDN", это не всегда соответствует наибольшему существующему размеру картинки.</small></p>
       </div>
     </div>
@@ -118,7 +137,12 @@ layout: default
     "@type" : "Article",
     "name" : "{{ page.title }}",
     "datePublished" : "{{ page.date | date_to_xmlschema }}",
-    "image" : "{{ page.image }}",
+    "image": {
+      "@type": "ImageObject",
+      "url": "{% img_src m %}",
+      "height": {{ mh }},
+      "width": {{ mw }}
+    },
     "articleBody" : "{{ page.content | strip_html | strip_newlines }}",
     "headline" : "{{ page.title }}",
     "author": {
@@ -130,13 +154,15 @@ layout: default
       "name": "dxfoto.ru",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://www.dxfoto.ru/logo.jpg",
-        "width": 324,
-        "height": 100
+        "url": "https://www.dxfoto.ru/logo_60.jpg",
+        "width": 194,
+        "height": 60
       }
-
-    }
-
-
+    },
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"{{ site.url }}{{ page.url }}"
+    },
+    "dateModified": "{{ page.date | date_to_xmlschema }}"
   }
 </script>

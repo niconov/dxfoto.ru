@@ -17,10 +17,14 @@
   <meta property="og:referenced" content="{{ link.href | url_escape }}">
 {% endfor %}
 {% if exif['ImageWidth'] %}
-  <meta property="og:image:width" content="{{ exif['ImageWidth'] }}">
+  <meta property="og:image:width" content="1024">
 {% endif %}
 {% if exif['ImageHeight'] %}
-  <meta property="og:image:height" content="{{ exif['ImageHeight'] }}">
+  {% assign fw = exif['ImageWidth'] %}
+  {% assign fh = exif['ImageHeight'] %}
+  {% assign mw = 1024 %}
+  {% assign mh = fh | times: mw | divided_by: fw %}
+  <meta property="og:image:height" content="{{ mh }}">
 {% endif %}
 {% if exif['GPSPosition'] %}
   <meta property="place:location:latitude" content="{{ exif['GPSLatitude'] | dms2deg }}">
