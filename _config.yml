@@ -10,4 +10,6 @@ permalink: /:year/:month/:day.html
 #markdown: kramdown
 exclude:
   - vendor
+kramdown:
+  smart_quotes:   ldquo,rdquo,laquo,raquo
 gems: [aws-sdk]
