@@ -34,19 +34,19 @@ layout: default
 {% endif %}
 <div itemscope itemtype="http://schema.org/Photograph">
   <div class="pure-g links">
-    <div class="pure-u-6-24 left">
+    <div class="pure-u-8-24 left">
       {% if page.previous %}
-        <a href="{{ page.previous.url }}"><i class="fa fa-arrow-left"></i> {{ page.previous.date | date: "%Y %m %d" }}</a>
+        <a href="{{ page.previous.url }}"><i class="fa fa-arrow-left"></i><span class="sm-hide"> {{ page.previous.date | date: "%Y %m %d" }}</span></a>
       {% else %}
         <a href="#"><i class="fa fa-times"></i></a>
       {% endif %}
     </div>
-    <div class="pure-u-12-24 center">
+    <div class="pure-u-8-24 center">
       <strong><time itemprop="datePublished" datetime="{{ page.date | date: "%Y-%m-%d" }}">{{ page.date | date: "%Y %m %d" }}</time></strong>
     </div>
-    <div class="pure-u-6-24 right">
+    <div class="pure-u-8-24 right">
       {% if page.next %}
-        <a href="{{ page.next.url }}">{{ page.next.date | date: "%Y %m %d" }} <i class="fa fa-arrow-right"></i></a>
+        <a href="{{ page.next.url }}"><span class="sm-hide">{{ page.next.date | date: "%Y %m %d" }} </span><i class="fa fa-arrow-right"></i></a>
       {% else %}
         <a href="#"><i class="fa fa-times"></i></a>
       {% endif %}
