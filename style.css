@@ -163,7 +163,9 @@ a {
   width: 100%;
   position: absolute;
 }
-
+.sm-hide, links time {
+  white-space: nowrap;
+}
 @media screen and (max-width: 48em) {
   .sm-hide {
     display: none;
