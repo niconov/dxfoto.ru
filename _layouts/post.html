@@ -106,9 +106,9 @@ layout: default
           <ul>
             {% for link in page.links %}
               <li>
+                <i class="fa fa-link"></i>
+                <b>{{ link.info }}</b>:
                 <a href="{{ link.href }}" class="pure-menu-link" itemprop="sameAs">
-                  <i class="fa fa-link"></i>
-                  <b>{{ link.info }}</b>:
                   {% if link.title %}
                     {{ link.title }}
                   {% else %}
