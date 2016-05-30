@@ -65,7 +65,15 @@ layout: default
   <div class="pure-g text">
     <div class="pure-u-md-6-24 pure-u-1"> </div>
     <div class="pure-u-md-12-24 pure-u-1">
-      <h1 itemprop="name">{{ page.title }}</h1>
+      {% assign dc = page.shoot_date | date: '%s' %}
+      {% assign dp = page.date | date: '%s' %}
+      {% assign datediff = dp | minus: dc | divided_by: 86400 %}
+      <h1>
+        {% if datediff < 10 %}
+          <i class="fa fa-fire" style="color: #b25d5d; opacity: {{ 10 | minus: datediff | divided_by: 10.0 }}"></i>
+        {% endif %}
+        <span itemprop="name">{{ page.title }}</span>
+      </h1>
       <div itemprop="description">{{ content }}</div>
       <div class="meta tags">
         <hr />
