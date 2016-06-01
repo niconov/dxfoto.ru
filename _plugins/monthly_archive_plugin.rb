@@ -53,7 +53,7 @@ module Jekyll
       @year = year
       @month = month.to_s.rjust(2, '0')
       @archive_dir_name = '%04d/%02d' % [year, month]
-      @date = Date.new(@year, @month.to_i)
+      @date = Time.new(@year, @month.to_i)
       @layout =  site.config['monthly_archive'] && site.config['monthly_archive']['layout'] || 'monthly_archive'
       self.ext = '.html'
       self.basename = 'index'
