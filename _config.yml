@@ -4,7 +4,7 @@ email: site@dxfoto.ru
 description: > # this means to ignore newlines until "baseurl:"
   Дарим по картинке в день из наших архивов. Просто так. Аттракцион невиданной щедрости.
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://www.dxfoto.ru" # the base hostname & protocol for your site
+url: "https://www.dxfoto.ru" # the base hostname & protocol for your site
 permalink: /:year/:month/:day.html
 # Build settings
 #markdown: kramdown
