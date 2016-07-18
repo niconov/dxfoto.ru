@@ -5,10 +5,10 @@ sitemap:
 og:
   exclude: 'yes'
 ---
-{% assign thres = "1455656400" %}
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  {% assign thres = "1455656400" %}
   {% for post in site.posts %}
     {% unless post.published == false %}
     {% capture posttime %}{{ post.date | date: '%s'}}{% endcapture %}
