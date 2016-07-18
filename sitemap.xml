@@ -39,7 +39,7 @@ og:
         {% endif %}
         <image:caption>{{ post.content | markdownify | strip_html }}</image:caption>
         <image:geo_location>{{ post.location }}</image:geo_location>
-        <image:caption>{{ post.title }}</image:caption>
+        <image:title>{{ post.title }}</image:title>
         <image:license>http://creativecommons.org/licenses/by/4.0/</image:license>
       </image:image>
     </url>
