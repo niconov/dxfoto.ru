@@ -5,11 +5,13 @@ sitemap:
 og:
   exclude: 'yes'
 ---
+{% assign thres = "1455656400" %}
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   {% for post in site.posts %}
     {% unless post.published == false %}
+    {% capture posttime %}{{ post.date | date: '%s'}}{% endcapture %}
     <url>
       <loc>{{ site.url }}{{ post.url }}</loc>
       {% if post.sitemap.lastmod %}
@@ -30,7 +32,11 @@ og:
         <priority>0.5</priority>
       {% endif %}
       <image:image>
-        <image:loc>{% img_src l %}</image:loc>
+        {% if posttime < thres %}
+          <image:loc>https://res.cloudinary.com/dxfoto-ru/t_large/{{post.date | date: "%Y"}}/{{post.date | date: "%m"}}/{{post.date | date: "%Y-%m-%d"}}.jpg</image:loc>
+        {% else %}
+          <image:loc>https://img.dxfoto.ru/l/{{post.date | date: "%Y"}}/{{post.date | date: "%m"}}/{{post.date | date: "%Y-%m-%d"}}.jpg</image:loc>
+        {% endif %}
         <image:caption>{{ post.content | markdownify | strip_html }}</image:caption>
         <image:geo_location>{{ post.location }}</image:geo_location>
         <image:caption>{{ post.title }}</image:caption>
