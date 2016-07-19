@@ -171,3 +171,28 @@ a {
     display: none;
   }
 }
+
+blockquote p:before {
+  content: "\f10d";
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+  color: #7f7f7f;
+  padding-right: 0.5em;
+}
+blockquote p:after {
+  content: "\f10e";
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+  color: #7f7f7f;
+  padding-left: 0.5em;
+}
+blockquote p:last-child:before {
+  content: none;
+}
+blockquote p:last-child:after {
+  content: none;
+}
