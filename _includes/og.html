@@ -26,6 +26,7 @@
   {% assign mh = fh | times: mw | divided_by: fw %}
   <meta property="og:image:height" content="{{ mh }}">
 {% endif %}
+<meta property="fb:app_id" content="1658389201145827" />
 {% if exif['GPSPosition'] %}
   <meta property="place:location:latitude" content="{{ exif['GPSLatitude'] | dms2deg }}">
   <meta property="place:location:longitude" content="{{ exif['GPSLongitude'] | dms2deg }}">
