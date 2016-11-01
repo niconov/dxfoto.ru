@@ -3,7 +3,7 @@ cache: bundler
 rvm:
 - 2.2
 script:
-- bundle exec jekyll build
+- bundle exec jekyll build -I
 branches:
   only:
   - deploy-aerobatic
