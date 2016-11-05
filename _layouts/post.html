@@ -53,11 +53,22 @@ layout: default
     </div>
   </div>
   <div class="pure-g pic">
-
+    {% if page.colors %}
+      <style>
+.checkers {
+  background-color: #{{ page.colors[0] }};
+  background-image: linear-gradient(45deg, #{{ page.colors[1] }} 25%, transparent 25%, transparent),
+                    linear-gradient(-45deg, #{{ page.colors[1] }} 25%, transparent 25%, transparent),
+                    linear-gradient(45deg, transparent 75%, #{{ page.colors[1] }} 75%),
+                    linear-gradient(-45deg, transparent 75%, #{{ page.colors[1] }} 75%);
+  background-size: 50px 50px;
+}
+      </style>
+    {% endif %}
     {% if exif['ImageWidth'] %}
-      <div class="pure-u-1 colored-wrapper" style="padding-bottom: {% prop_calc %}; background-color: {{ bgcolor }}">
+      <div class="pure-u-1 colored-wrapper checkers" style="padding-bottom: {% prop_calc %}; background-color: {{ bgcolor }}">
     {% else %}
-      <div class="pure-u-1">
+      <div class="pure-u-1 checkers">
     {% endif %}
       <img itemprop="image" src="{% img_src l %}" class="pure-img" alt="{{ page.title }}" />
     </div>
@@ -65,15 +76,7 @@ layout: default
   <div class="pure-g text">
     <div class="pure-u-md-6-24 pure-u-1"> </div>
     <div class="pure-u-md-12-24 pure-u-1">
-      {% assign dc = page.shoot_date | date: '%s' %}
-      {% assign dp = page.date | date: '%s' %}
-      {% assign datediff = dp | minus: dc | divided_by: 86400 %}
-      <h1>
-        {% if datediff < 10 %}
-          <i class="fa fa-fire" style="color: #b25d5d; opacity: {{ 10 | minus: datediff | divided_by: 10.0 }}"></i>
-        {% endif %}
-        <span itemprop="name">{{ page.title }}</span>
-      </h1>
+      <h1><span itemprop="name">{{ page.title }}</span></h1>
       <div itemprop="description">{{ content }}</div>
       <div class="meta tags">
         <hr />
