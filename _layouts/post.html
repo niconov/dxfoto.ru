@@ -82,7 +82,7 @@ layout: default
         <hr />
         <span itemprop="contentLocation" itemscope itemtype="http://schema.org/Place">
           {% if exif['GPSPosition'] %}
-            <span class="tag" itemprop="name"><i class="fa fa-map-marker"></i><a href="https://www.google.ru/maps/place/{{ exif['GPSPosition'] | replace: ' deg', '°' | replace: '"', '″' | replace "'", '′' }}" itemprop="url">{{ page.location }}</a></span>
+            <span class="tag" itemprop="name"><i class="fa fa-map-marker"></i><a href="https://www.google.ru/maps/place/{{ exif['GPSPosition'] | coord_format }}" itemprop="url">{{ page.location }}</a></span>
             <span itemprop="geo" itemscope itemtype="http://schema.org/GeoCoordinates" />
               <meta itemprop="latitude" content="{{ exif['GPSLatitude'] | dms2deg }}" />
               <meta itemprop="longitude" content="{{ exif['GPSLongitude'] | dms2deg }}" />
