@@ -115,18 +115,42 @@ a {
 .index .post-link {
   padding-left: 4em;
 }
-
+.index .full {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	flex-flow: row wrap;
+	-webkit-box-flex: 1 1 auto;
+	-moz-box-flex:  1 1 auto;
+	-webkit-flex:  1 1 auto;
+	-ms-flex:  1 1 auto;
+	flex:  1 1 auto;
+	justify-content:flex-start;
+	margin: 2em 0;
+}
 .index .full .item {
-  display: inline-block;
-  margin-left: 2em;
-  margin-right: 2em;
+	max-width: 300px;
+	width: 10%;
+	min-width: 200px;
+	padding: 0 2em;
+	/*display: inline-block;*/
+	text-align: center;
+	margin-bottom: 1.5em;
 }
 .index .full .item .left {
-  display: inline-block;
-  text-align: right;
+	text-align: center;
+  /*display: inline-block;
+  text-align: right;*/
+}
+.index .full .item .left a {
+	padding: .5em 0;
+	display: inline-block;
 }
 .index .full .item .right {
-  display: inline-block;
+	text-align: center;
+  /*display: inline-block;*/
 }
 .index .full .item .right .day {
   font-size: 3em;
@@ -134,13 +158,17 @@ a {
   font-weight: 100;
 }
 .index .full .item .left .title {
-  vertical-align: middle;
+	text-align: center;
+  /*vertical-align: middle;*/
   font-weight: 300;
 }
 .index .full .item .left .month-year {
+	padding: .5em 0;
+	text-align: center;
   vertical-align: middle;
   font-weight: 100;
 }
 .index .full .divider {
+	width: 100%;
   margin-top: 32px;
 }

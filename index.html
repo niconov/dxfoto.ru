@@ -24,12 +24,22 @@ og:
   <div class="pure-u-24-24 full">
     {% assign prv_m = "13" %}
     {% for post in site.posts %}
-      {% assign cur_m = post.date | date: "%m" %}
+
+			{% assign cur_m = post.date | date: "%m" %}
+			<!-- MATH MAGIC! -->
+			{% assign order_y = post.date | date: "%y" | plus: -14 | times: 500  %}
+			{% assign order_m = post.date | date: "%m" | times: 50 %}
+			{% assign order_d = post.date | date: "%d" | plus: -32 | times: -1  %}
+
+			{% assign order = order_y | plus: order_m | plus: order_d  %}
+
       {% unless cur_m == prv_m %}
-        <div class="divider"></div>
+				{% assign order_div = order | plus: -1  %}
+        <div class="divider" style="order: -{{order_div}}"></div>
       {% endunless %}
-      <div class="item">
+				<div class="item" style="order: -{{order}}">
         <div class="left">
+
           <div class="title">
             <a href="{{ post.url }}">{{ post.title }}</a>
           </div>
